@@ -17,15 +17,40 @@
 
 // Create a user interface that visualizes organizing people into evenly sized groups. Allow the user to specify the number of people to start with and the number of groups to make. Use the chunk function to perform the groupings, and add the necessary DOM manipulation to render the groups.
 
+
+
+
 var chunk = function(array, num){
 	var arrayLength = array.length;
 	var numPlusOne = arrayLength%num;
-	var numForAll = arrayLength-numPlusOne;
+	var numForAll = (arrayLength-numPlusOne)/num;
 	var newArray = [];
-	if(newArray.length < numPlusOne-1){
-		var tempArray = [];
-		for(var i = 0 ; i < )
+	var i = 0;
+	var n = numForAll+1;
+	var b = ((numForAll+1)*numPlusOne)-1;
+	for (var o = 0 ; o < num ; o++){
+		if(newArray.length < numPlusOne){
+			var tempArray = [];
+			var c = i + n;
+			for(i = i ; i < c ; i++){
+			 tempArray.push(array[i]);
+			 
+			}
+			newArray.push(tempArray);
+		} else {
+			var c = i + numForAll;
+			var tempArray = [];
+			for(i = i ; i < c ; i++ ){
+				tempArray.push(array[i]);
+				
+			}
+			newArray.push(tempArray);
+		}
 	}
 
-
+ 	return newArray;
 };
+var input = [1,2,3,4,5,6,7,8,9,10];
+console.log(chunk(input, 3));
+console.log(chunk(input, 7));
+
